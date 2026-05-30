@@ -1,0 +1,27 @@
+name: Keep Render Warm
+
+# Render Starter plan can still go cold after maintenance/scaling.
+# Ping the backend every 10 minutes to keep it warm.
+
+on:
+  schedule:
+    - cron: '*/3 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ping backend
+        run: |
+          for i in 1 2 3; do
+            echo "Attempt $i:"
+            if curl -fsS --max-time 30 https://super-crm-api-q8qf.onrender.com/ > /dev/null; then
+              echo "OK"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "All attempts failed"
+          exit 1

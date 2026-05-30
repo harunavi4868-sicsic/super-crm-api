@@ -16,6 +16,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        "https://symphonious-heliotrope-094c7b.netlify.app",
         "https://super-crm-haru.netlify.app",
         "https://super-crm-app.netlify.app",
         "https://crm.haru.tips",

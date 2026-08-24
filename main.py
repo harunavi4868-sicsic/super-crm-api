@@ -17,6 +17,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        "https://super-crm-newaccount.netlify.app",
         "http://localhost:3200",
         "http://localhost:5173",
     ],

@@ -12,14 +12,11 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS — Netlify 프론트 + 로컬 개발 허용
+# CORS — Netlify 프론트(신규 계정) + 로컬 개발 허용
+# TODO: 새 Netlify 사이트 도메인 확정되면 아래 리스트에 추가할 것
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://crm-insurance.netlify.app",
-        "https://super-crm-haru.netlify.app",
-        "https://super-crm-app.netlify.app",
-        "https://crm.haru.tips",
         "http://localhost:3200",
         "http://localhost:5173",
     ],
